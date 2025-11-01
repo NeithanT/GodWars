@@ -6,8 +6,10 @@
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Fighters/FighterType.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Player/Player.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/Client.java
+/home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/ClientConnection.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/ProcessRequest.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/Server.java
+/home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/ServerConnection.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Tiles/Board.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Tiles/Tile.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Tiles/TileState.java

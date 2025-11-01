@@ -1,39 +1,76 @@
 package Server;
 
-import Player.Player;
 import java.io.IOException;
 import java.net.ServerSocket;
-import java.util.ArrayList;
+import java.net.Socket;
 
 public class Server {
-    private final int PORT = 35500;
+    
+    public static final int PORT = 44444;
     private final int MAX_CONNECTIONS = 4;
-    private ArrayList<Player> players;
+    private ServerConnection[] players;
+    
+    private int amtOfPlayers;
+    private int currentPlayer = 1;
+    
     private ServerSocket serverSocket;
+    private Socket temptSocket;
     
     public Server() {
-        System.out.println("Started");
-        this.init();
+        System.out.println("Starting...");
+        players = new ServerConnection[4];
+        init();
     }
     
     private void init() {
         try {
             serverSocket = new ServerSocket(PORT);
+            waitConnection();
         } catch (IOException ex) {
             System.out.println("The port is not avalaible");
         }
     }
     
-    public void broadcast(String msg) {
-        
+    public void waitConnection() {
+    
+        try {
+            while (amtOfPlayers < MAX_CONNECTIONS) {
+                for (int i = 0; i < MAX_CONNECTIONS; i++) {
+                    if (players[i] == null) {
+                        System.out.println("Waiting for player "
+                            + (i + 1));
+                        break;
+                    }
+                }
+                
+                temptSocket = serverSocket.accept();
+                
+                for (int i = 0; i < MAX_CONNECTIONS; i++) {
+                    if (players[i] == null) {
+                        players[i] = new ServerConnection(temptSocket, i + 1);
+                        players[i].start();
+                        //notifyOthers();
+                        break;
+                    }
+                }
+                temptSocket = null;
+            }
+        } catch (IOException ex) {
+            System.out.println("Error handling connections");
+        }
+    }
+    
+
+    public void receiveAttacks() {
+    
+    }
+    
+    public void sendAttacks() {
+    
     }
     
     public static void main(String[] args) {
-    
+        Server sev = new Server();
     }
-    
-    
-
-    
     
 }

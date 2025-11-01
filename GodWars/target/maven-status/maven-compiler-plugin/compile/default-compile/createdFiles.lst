@@ -1,5 +1,6 @@
 Server/Client.class
 Fighters/Fighter.class
+Server/ServerConnection.class
 Tiles/Board.class
 Client/FrameClient$2.class
 Client/ThreadClient.class
@@ -13,6 +14,7 @@ Client/GUI/FrameCharacterSelection$1.class
 Client/FrameClient$1.class
 Fighters/FighterType.class
 Client/FrameClient.class
+Server/ClientConnection.class
 Client/GUI/FrameCharacterSelection.class
 Client/Client.class
 Vanity/RoundedButton.class
