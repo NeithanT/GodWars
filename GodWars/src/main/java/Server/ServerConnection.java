@@ -8,15 +8,16 @@ import java.net.Socket;
 
 public class ServerConnection extends Thread {
 
-    
+    private Server server;
     private Socket socket;
     private DataInputStream inputStream;
     private DataOutputStream outputStream;
     
     private int numOfPlayer;
-    public ServerConnection(Socket s, int num) {
+    public ServerConnection(Socket s, int num, Server sv) {
         this.socket = s;
         this.numOfPlayer = num;
+        server = sv;
     }
     
     @Override
@@ -28,14 +29,13 @@ public class ServerConnection extends Thread {
             outputStream = new DataOutputStream(socket.getOutputStream());
             
             outputStream.writeInt(numOfPlayer);
-            String inputBuffer = "";
+            int dmg = 0;
             
-            while (!inputBuffer.equals("Over")) {
+            while (dmg > -1) {
                 System.out.println("Created server Socked");
                 try {
-                    inputBuffer = inputStream.readUTF();
-                    System.out.println(inputBuffer);
-                    //outputStream.writeUTF("Hello");
+                    dmg = inputStream.readInt();
+                    server.attackOthers(dmg, this);
                 } catch (IOException ex) {
                     System.out.println("Error sending or input data in SERVER");
                 }
@@ -51,4 +51,16 @@ public class ServerConnection extends Thread {
         }
     }
     
+    public void sendAttack(int dmg) {
+    
+    }
+    
+    public void receiveAttack(int dmg) {
+    
+        try {
+            outputStream.writeInt(dmg);
+        } catch(IOException ex) {
+            System.out.println("Could not send attack");
+        }
+    }
 }

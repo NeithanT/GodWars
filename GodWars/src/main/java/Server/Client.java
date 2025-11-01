@@ -5,6 +5,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.net.Socket;
+import java.util.Random;
 
 public class Client extends javax.swing.JFrame {
     
@@ -13,11 +14,14 @@ public class Client extends javax.swing.JFrame {
     private ClientConnection connection;
     private int numOfPlayer;
     private int currentPlayer;
+    private int[] hps = {100, 100, 100, 100};
+    private Random rand;
     
     /**
      * Creates new form Client
      */
     public Client() {
+        rand = new Random();
         initComponents();
         connectToServer();
         try {
@@ -31,7 +35,7 @@ public class Client extends javax.swing.JFrame {
 
     public void connectToServer() {
     
-        connection = new ClientConnection();
+        connection = new ClientConnection(this);
         connection.start();
     }
     /**
@@ -46,12 +50,8 @@ public class Client extends javax.swing.JFrame {
         btnAttack = new javax.swing.JButton();
         lblPlayer1 = new javax.swing.JLabel();
         lblPlayer2 = new javax.swing.JLabel();
-        lblPlayer3 = new javax.swing.JLabel();
-        lblPlayer4 = new javax.swing.JLabel();
-        jProgressBar2 = new javax.swing.JProgressBar();
-        jProgressBar5 = new javax.swing.JProgressBar();
-        jProgressBar6 = new javax.swing.JProgressBar();
-        jProgressBar7 = new javax.swing.JProgressBar();
+        prgBar2 = new javax.swing.JProgressBar();
+        prgBar1 = new javax.swing.JProgressBar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,97 +65,73 @@ public class Client extends javax.swing.JFrame {
 
         lblPlayer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/kitten1.jpg"))); // NOI18N
 
-        lblPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/kitten2.jpg"))); // NOI18N
+        lblPlayer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/kitten4.png"))); // NOI18N
 
-        lblPlayer3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/kitten3.jpg"))); // NOI18N
+        prgBar2.setBackground(new java.awt.Color(204, 0, 51));
+        prgBar2.setForeground(new java.awt.Color(102, 255, 102));
+        prgBar2.setValue(100);
+        prgBar2.setString("80%");
 
-        lblPlayer4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/kitten4.png"))); // NOI18N
-
-        jProgressBar2.setBackground(new java.awt.Color(255, 0, 51));
-        jProgressBar2.setForeground(new java.awt.Color(102, 255, 102));
-        jProgressBar2.setValue(100);
-        jProgressBar2.setString("80%");
-
-        jProgressBar5.setBackground(new java.awt.Color(255, 0, 51));
-        jProgressBar5.setForeground(new java.awt.Color(102, 255, 102));
-        jProgressBar5.setValue(100);
-        jProgressBar5.setString("80%");
-
-        jProgressBar6.setBackground(new java.awt.Color(255, 0, 51));
-        jProgressBar6.setForeground(new java.awt.Color(102, 255, 102));
-        jProgressBar6.setValue(100);
-        jProgressBar6.setString("80%");
-
-        jProgressBar7.setBackground(new java.awt.Color(255, 0, 51));
-        jProgressBar7.setForeground(new java.awt.Color(102, 255, 102));
-        jProgressBar7.setValue(100);
-        jProgressBar7.setString("80%");
+        prgBar1.setBackground(new java.awt.Color(204, 0, 51));
+        prgBar1.setForeground(new java.awt.Color(102, 255, 102));
+        prgBar1.setValue(100);
+        prgBar1.setString("80%");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(532, Short.MAX_VALUE)
                 .addComponent(btnAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(501, 501, 501))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(lblPlayer1)
-                .addGap(35, 35, 35)
+                .addGap(234, 234, 234)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblPlayer1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(prgBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblPlayer2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lblPlayer3))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jProgressBar6, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
-                        .addComponent(jProgressBar7, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblPlayer4, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(29, 29, 29))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(70, 70, 70)
-                    .addComponent(jProgressBar5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGap(825, 825, 825)))
+                    .addComponent(lblPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prgBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(197, 197, 197))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(lblPlayer4)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPlayer1)
-                            .addComponent(lblPlayer2)))
-                    .addComponent(lblPlayer3))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPlayer2)
+                    .addComponent(lblPlayer1))
                 .addGap(73, 73, 73)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jProgressBar6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar7, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jProgressBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(prgBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(prgBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
                 .addComponent(btnAttack, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(146, 146, 146))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(322, 322, 322)
-                    .addComponent(jProgressBar5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(323, Short.MAX_VALUE)))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
-        // TODO add your handling code here:
+        int dmg = rand.nextInt() % 20 + 10;
+        connection.attack(dmg);
+        if (currentPlayer == 1) {
+            prgBar2.setValue(prgBar2.getValue() - dmg);
+        } else {
+            prgBar1.setValue(prgBar1.getValue() - dmg);
+        }
     }//GEN-LAST:event_btnAttackActionPerformed
 
+    public void receiveAttack(int dmg) {
+        if (currentPlayer == 2) {
+            prgBar2.setValue(prgBar2.getValue() - dmg);
+        } else {
+            prgBar1.setValue(prgBar1.getValue() - dmg);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -183,13 +159,9 @@ public class Client extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAttack;
-    private javax.swing.JProgressBar jProgressBar2;
-    private javax.swing.JProgressBar jProgressBar5;
-    private javax.swing.JProgressBar jProgressBar6;
-    private javax.swing.JProgressBar jProgressBar7;
     private javax.swing.JLabel lblPlayer1;
     private javax.swing.JLabel lblPlayer2;
-    private javax.swing.JLabel lblPlayer3;
-    private javax.swing.JLabel lblPlayer4;
+    private javax.swing.JProgressBar prgBar1;
+    private javax.swing.JProgressBar prgBar2;
     // End of variables declaration//GEN-END:variables
 }

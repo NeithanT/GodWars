@@ -10,6 +10,7 @@ public class Server {
     private final int MAX_CONNECTIONS = 4;
     private ServerConnection[] players;
     
+    
     private int amtOfPlayers;
     private int currentPlayer = 1;
     
@@ -47,9 +48,9 @@ public class Server {
                 
                 for (int i = 0; i < MAX_CONNECTIONS; i++) {
                     if (players[i] == null) {
-                        players[i] = new ServerConnection(temptSocket, i + 1);
+                        players[i] = new ServerConnection(temptSocket, i + 1, this);
                         players[i].start();
-                        //notifyOthers();
+                        notifyOthers(i);
                         break;
                     }
                 }
@@ -61,13 +62,19 @@ public class Server {
     }
     
 
-    public void receiveAttacks() {
+    public void notifyOthers(int index) {
     
+        // TODO, in future, notify others of new players joined ..
     }
     
-    public void sendAttacks() {
-    
+    public void attackOthers(int dmg, ServerConnection sc) {
+        for (int i = 0; i < MAX_CONNECTIONS; i++) {
+            if (players[i] != null && !players[i].equals(sc)) {
+                players[i].receiveAttack(dmg);
+            }
+        }
     }
+    
     
     public static void main(String[] args) {
         Server sev = new Server();

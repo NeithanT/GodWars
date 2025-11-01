@@ -12,6 +12,11 @@ public class ClientConnection extends Thread {
     private DataInputStream dataInput;
     private DataOutputStream dataOutput;
     private int currentPlayer;
+    private Client clientFrame;
+    
+    public ClientConnection(Client cli) {
+        clientFrame = cli;
+    }
     
     @Override
     public void run() {
@@ -25,12 +30,12 @@ public class ClientConnection extends Thread {
             dataOutput = new DataOutputStream(socket.getOutputStream());
             
             currentPlayer = dataInput.readInt();
-            String inputBuffer = "";
+            int dmg = 0;
             
-            while (!inputBuffer.equals("Over")) {
+            while (dmg > -1) {
                 try {
-                    inputBuffer = dataInput.readUTF();
-                    System.out.println(inputBuffer);
+                    dmg = dataInput.readInt();
+                    receiveAttack(dmg);
                     //dataOutput.writeUTF("Hello back!");
                 }
                 catch (IOException e) {
@@ -53,12 +58,16 @@ public class ClientConnection extends Thread {
         return currentPlayer;
     }
     
-    public void attack() {
-    
+    public void attack(int dmg) {
+        try {
+            dataOutput.writeInt(dmg);
+        } catch (IOException ex) {
+            System.out.println("No funciono atacar");
+        }
     }
     
-    public void receiveAttack(int damage, int attackerId) {
-    
+    public void receiveAttack(int damage) {
+        clientFrame.receiveAttack(damage);
     }
 
 }

@@ -24,72 +24,41 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="532" max="32767" attributes="0"/>
               <Component id="btnAttack" min="-2" pref="87" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="501" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
-              <Component id="lblPlayer1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="234" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="lblPlayer1" max="32767" attributes="0"/>
+                  <Component id="prgBar1" max="32767" attributes="0"/>
+              </Group>
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="lblPlayer2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="lblPlayer3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="jProgressBar6" min="-2" pref="225" max="-2" attributes="0"/>
-                      <EmptySpace pref="60" max="32767" attributes="0"/>
-                      <Component id="jProgressBar7" min="-2" pref="225" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="lblPlayer2" min="-2" pref="224" max="-2" attributes="0"/>
+                  <Component id="prgBar2" min="-2" pref="225" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblPlayer4" min="-2" pref="224" max="-2" attributes="0"/>
-                  <Component id="jProgressBar2" min="-2" pref="225" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
-                  <Component id="jProgressBar5" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="825" max="-2" attributes="0"/>
-              </Group>
+              <EmptySpace min="-2" pref="197" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblPlayer4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblPlayer1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblPlayer2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="lblPlayer3" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="lblPlayer2" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblPlayer1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jProgressBar6" min="-2" pref="63" max="-2" attributes="0"/>
-                  <Component id="jProgressBar7" min="-2" pref="63" max="-2" attributes="0"/>
-                  <Component id="jProgressBar2" min="-2" pref="63" max="-2" attributes="0"/>
+                  <Component id="prgBar2" min="-2" pref="63" max="-2" attributes="0"/>
+                  <Component id="prgBar1" min="-2" pref="63" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="115" max="32767" attributes="0"/>
               <Component id="btnAttack" min="-2" pref="62" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="146" max="-2" attributes="0"/>
-          </Group>
-          <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="322" max="-2" attributes="0"/>
-                  <Component id="jProgressBar5" min="-2" pref="63" max="-2" attributes="0"/>
-                  <EmptySpace pref="323" max="32767" attributes="0"/>
-              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -116,28 +85,14 @@
     <Component class="javax.swing.JLabel" name="lblPlayer2">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/assets/kitten2.jpg"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPlayer3">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/assets/kitten3.jpg"/>
-        </Property>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblPlayer4">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/assets/kitten4.png"/>
         </Property>
       </Properties>
     </Component>
-    <Component class="javax.swing.JProgressBar" name="jProgressBar2">
+    <Component class="javax.swing.JProgressBar" name="prgBar2">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="ff" type="rgb"/>
+          <Color blue="33" green="0" red="cc" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="ff" red="66" type="rgb"/>
@@ -146,34 +101,10 @@
         <Property name="string" type="java.lang.String" value="80%"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JProgressBar" name="jProgressBar5">
+    <Component class="javax.swing.JProgressBar" name="prgBar1">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="ff" red="66" type="rgb"/>
-        </Property>
-        <Property name="value" type="int" value="100"/>
-        <Property name="string" type="java.lang.String" value="80%"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="jProgressBar6">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="ff" type="rgb"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="ff" red="66" type="rgb"/>
-        </Property>
-        <Property name="value" type="int" value="100"/>
-        <Property name="string" type="java.lang.String" value="80%"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JProgressBar" name="jProgressBar7">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="0" red="ff" type="rgb"/>
+          <Color blue="33" green="0" red="cc" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="ff" red="66" type="rgb"/>
