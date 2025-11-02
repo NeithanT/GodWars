@@ -18,7 +18,7 @@ public class Board {
     private void initializeTiles() {
     
         for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < ROWS; j++) {
+            for (int j = 0; j < COLUMNS; j++) {
             
                 tiles[i][j] = new Tile();
             }

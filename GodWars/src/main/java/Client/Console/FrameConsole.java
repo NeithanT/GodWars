@@ -17,6 +17,10 @@ public class FrameConsole extends javax.swing.JFrame {
      */
     public FrameConsole() {
         initComponents();
+    
+        btnSend.addActionListener(e -> ProcesarComando());
+        txfCommand.addActionListener(e -> ProcesarComando());    
+    
     }
 
     /**
@@ -31,11 +35,11 @@ public class FrameConsole extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        txaLog = new javax.swing.JTextArea();
         txfCommand = new javax.swing.JTextField();
         plnMatriz = new javax.swing.JPanel();
         btnSend = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txaLog = new javax.swing.JTextArea();
 
         jPasswordField1.setText("jPasswordField1");
 
@@ -64,12 +68,6 @@ public class FrameConsole extends javax.swing.JFrame {
                 .addContainerGap(56, Short.MAX_VALUE))
         );
 
-        txaLog.setEditable(false);
-        txaLog.setColumns(20);
-        txaLog.setLineWrap(true);
-        txaLog.setRows(5);
-        jScrollPane1.setViewportView(txaLog);
-
         plnMatriz.setBackground(new java.awt.Color(204, 204, 204));
         plnMatriz.setForeground(new java.awt.Color(204, 204, 204));
 
@@ -91,6 +89,12 @@ public class FrameConsole extends javax.swing.JFrame {
             }
         });
 
+        txaLog.setEditable(false);
+        txaLog.setColumns(20);
+        txaLog.setLineWrap(true);
+        txaLog.setRows(5);
+        jScrollPane2.setViewportView(txaLog);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,10 +109,10 @@ public class FrameConsole extends javax.swing.JFrame {
                         .addComponent(btnSend, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(6, 6, 6)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(plnMatriz, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 232, Short.MAX_VALUE)))
+                        .addGap(0, 285, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -118,8 +122,8 @@ public class FrameConsole extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
-                    .addComponent(plnMatriz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(plnMatriz, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txfCommand, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -130,15 +134,32 @@ public class FrameConsole extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
     private void btnSendActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSendActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnSendActionPerformed
     
+    public void log(String message) {
+    txaLog.append(message + "\n"); //agregar una línea a la bitácora 
+    }
+    
     private void ProcesarComando(){
     String comando = txfCommand.getText().trim(); //trim para eliminar espacios en blancos d l q el usuario ingrese 
     if (comando.isEmpty()) return; //
+    
+    log(">" + comando); // > para que se note q es entrada del jugador
+    txfCommand.setText("");
+    
+    if (interpreter != null) {
+        interpreter.handle(comando); 
+    } else {
+        log("[ERROR] Intérprete no inicializado.");
+        }
     }
-
+    public void logAttack(int dmg, int attacker, int target) {
+    log("Jugador " + attacker + " atacó al jugador " + target + " con daño de " + dmg);
+    }
     
     /**
      * @param args the command line arguments
@@ -171,6 +192,7 @@ public class FrameConsole extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel plnMatriz;
     private javax.swing.JTextArea txaLog;
     private javax.swing.JTextField txfCommand;

@@ -132,6 +132,9 @@ public class Client extends javax.swing.JFrame {
             prgBar1.setValue(prgBar1.getValue() - dmg);
         }
     }
+    public ClientConnection getConnection() {
+    return connection;
+    }
     /**
      * @param args the command line arguments
      */
