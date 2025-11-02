@@ -8,8 +8,12 @@ package Client.Console;
  *
  * @author melissa
  */
+import Models.CommandInterpreter;
+
 public class FrameConsole extends javax.swing.JFrame {
-    
+    private Client.Console.FrameConsole console;
+    private CommandInterpreter interpreter;
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameConsole.class.getName());
 
     /**
@@ -21,6 +25,10 @@ public class FrameConsole extends javax.swing.JFrame {
         btnSend.addActionListener(e -> ProcesarComando());
         txfCommand.addActionListener(e -> ProcesarComando());    
     
+    }
+    
+    public void attachInterpreter(CommandInterpreter interpreter) {
+    this.interpreter = interpreter;
     }
 
     /**
@@ -154,7 +162,7 @@ public class FrameConsole extends javax.swing.JFrame {
     if (interpreter != null) {
         interpreter.handle(comando); 
     } else {
-        log("[ERROR] Intérprete no inicializado.");
+        log("Error, Intérprete no inicializado.");
         }
     }
     public void logAttack(int dmg, int attacker, int target) {
