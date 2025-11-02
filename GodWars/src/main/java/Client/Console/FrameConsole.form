@@ -131,9 +131,6 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="txfCommand">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
     </Component>
     <Container class="javax.swing.JPanel" name="plnMatriz">
       <Properties>

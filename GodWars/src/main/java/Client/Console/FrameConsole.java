@@ -70,8 +70,6 @@ public class FrameConsole extends javax.swing.JFrame {
         txaLog.setRows(5);
         jScrollPane1.setViewportView(txaLog);
 
-        txfCommand.setText("jTextField1");
-
         plnMatriz.setBackground(new java.awt.Color(204, 204, 204));
         plnMatriz.setForeground(new java.awt.Color(204, 204, 204));
 
