@@ -1,5 +1,8 @@
 package Tiles;
 
 public enum TileState {
-    BLACKMANTA, 
+    EMPTY,       // 
+    OCCUPIED,    // perteneciente a un peleador
+    DAMAGED,     // daño recibido
+    DESTROYED    // no vida
 }
