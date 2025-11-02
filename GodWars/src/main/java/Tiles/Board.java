@@ -16,12 +16,31 @@ public class Board {
     private void initializeTiles() {
     
         for (int i = 0; i < ROWS; i++) {
-            for (int j = 0; j < ROWS; j++) {
+            for (int j = 0; j < COLUMNS; j++) {
             
-                tiles[i][j] = new Tile();
+                tiles[i][j] = new Tile(i, j);
             }
         }
     }
+    
+    //distribuir las casillas a cada luchador
+    
+    
+    
+    //GETTESR Y SETTERS
+
+    public int getROWS() {
+        return ROWS;
+    }
+
+    public int getCOLUMNS() {
+        return COLUMNS;
+    }
+
+    public Tile[][] getTiles() {
+        return tiles;
+    }
+    
     
     
 }
