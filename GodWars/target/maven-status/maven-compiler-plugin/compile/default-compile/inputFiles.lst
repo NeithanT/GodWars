@@ -1,10 +1,13 @@
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Client/Client.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Client/FrameClient.java
+/home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Client/GUI/CharacterSelectionScreen.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Client/GUI/FrameCharacterSelection.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Client/ThreadClient.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Fighters/Fighter.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Fighters/FighterType.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Player/Player.java
+/home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/Action.java
+/home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/ActionType.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/Client.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/ClientConnection.java
 /home/nei/Desktop/POO/GodWars/GodWars/src/main/java/Server/ProcessRequest.java

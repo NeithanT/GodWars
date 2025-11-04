@@ -1,8 +1,12 @@
 Server/Client.class
 Fighters/Fighter.class
+Client/GUI/CharacterSelectionScreen$1.class
 Server/ServerConnection.class
 Tiles/Board.class
+Server/ActionType.class
+Server/Action.class
 Client/FrameClient$2.class
+Client/GUI/CharacterSelectionScreen.class
 Client/ThreadClient.class
 Server/ProcessRequest.class
 Player/Player.class
@@ -14,11 +18,12 @@ Client/GUI/FrameCharacterSelection$1.class
 Client/FrameClient$1.class
 Fighters/FighterType.class
 Client/FrameClient.class
+Client/GUI/GradientPanel.class
 Server/ClientConnection.class
 Client/GUI/FrameCharacterSelection.class
 Client/Client.class
+Client/GUI/CharacterSelectionScreen$2.class
 Vanity/RoundedButton.class
 Vanity/RoundedPanel.class
 Vanity/DefaultFont.class
-Client/GUI/FrameCharacterSelection$2.class
 Server/Server.class
