@@ -1,5 +1,6 @@
 package Client.GUI;
 
+import java.awt.Color;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
@@ -7,6 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 
 public class FrameCharacterSelection extends javax.swing.JFrame {
     
@@ -15,14 +17,35 @@ public class FrameCharacterSelection extends javax.swing.JFrame {
     GraphicsDevice gd;
     
     private static final String IMAGE_PATH = "/assets/";
+    private ArrayList<Image> allImages;
     private Image background;
     
     public void loadImage() {
         try {
             
             background = ImageIO.read(getClass().getResource(IMAGE_PATH + "BlackManta.png"));
+            
             background = background.getScaledInstance(260, 200, Image.SCALE_SMOOTH);
-
+            allImages = new ArrayList<>();
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "BlackManta.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "Aquaman.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "Poseidon.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "Bob_Esponja.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "Calamardo.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "Patricio.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "Spiderman.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "Thor.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            allImages.add(ImageIO.read(getClass().getResource(IMAGE_PATH + "Dr_Strange.png"))
+                    .getScaledInstance(260, 200, Image.SCALE_SMOOTH));
+            
         } catch (IOException e) {
             System.out.println("No se pudo cargar");
         }
@@ -90,13 +113,16 @@ public class FrameCharacterSelection extends javax.swing.JFrame {
 
         pnlBackground.setBackground(new java.awt.Color(14, 51, 134));
 
+        btnCharacterThree.setContentAreaFilled(false);
         btnCharacterThree.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterThree.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterOne.setBorderPainted(false);
         btnCharacterOne.setContentAreaFilled(false);
         btnCharacterOne.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterOne.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterTwo.setContentAreaFilled(false);
         btnCharacterTwo.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterTwo.setPreferredSize(new java.awt.Dimension(260, 200));
         btnCharacterTwo.addActionListener(new java.awt.event.ActionListener() {
@@ -105,48 +131,64 @@ public class FrameCharacterSelection extends javax.swing.JFrame {
             }
         });
 
+        btnCharacterFour.setContentAreaFilled(false);
         btnCharacterFour.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterFour.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterFive.setContentAreaFilled(false);
         btnCharacterFive.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterFive.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterSeven.setContentAreaFilled(false);
         btnCharacterSeven.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterSeven.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterSix.setContentAreaFilled(false);
         btnCharacterSix.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterSix.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterEight.setContentAreaFilled(false);
         btnCharacterEight.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterEight.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterNine.setContentAreaFilled(false);
         btnCharacterNine.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterNine.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterTen.setContentAreaFilled(false);
         btnCharacterTen.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterTen.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterEleven.setContentAreaFilled(false);
         btnCharacterEleven.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterEleven.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterTwelve.setContentAreaFilled(false);
         btnCharacterTwelve.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterTwelve.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterThirteen.setContentAreaFilled(false);
         btnCharacterThirteen.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterThirteen.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterFourteen.setContentAreaFilled(false);
+        btnCharacterFourteen.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         btnCharacterFourteen.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterFourteen.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterFifteen.setContentAreaFilled(false);
         btnCharacterFifteen.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterFifteen.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterSixteen.setContentAreaFilled(false);
         btnCharacterSixteen.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterSixteen.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterSeventeen.setContentAreaFilled(false);
         btnCharacterSeventeen.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterSeventeen.setPreferredSize(new java.awt.Dimension(260, 200));
 
+        btnCharacterEighteen.setContentAreaFilled(false);
         btnCharacterEighteen.setMinimumSize(new java.awt.Dimension(260, 200));
         btnCharacterEighteen.setPreferredSize(new java.awt.Dimension(260, 200));
 
@@ -272,18 +314,37 @@ public class FrameCharacterSelection extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new FrameCharacterSelection().setVisible(true));
         
     }
+    
+    private void setHoverEffect(JButton button) {
+    
+        button.addMouseListener(new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                button.setOpaque(true);
+                button.setContentAreaFilled(true);
+                button.setBackground(Color.GREEN);
+            }
+
+            @Override
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                button.setOpaque(false);
+                button.setContentAreaFilled(false);
+            }
+        });
+        
+    }
 
     private void setButtonIcons() {
         ImageIcon icon = new ImageIcon(background);
-        btnCharacterOne.setIcon(icon);
-        btnCharacterTwo.setIcon(icon);
-        btnCharacterThree.setIcon(icon);
-        btnCharacterFour.setIcon(icon);
-        btnCharacterFive.setIcon(icon);
-        btnCharacterSix.setIcon(icon);
-        btnCharacterSeven.setIcon(icon);
-        btnCharacterEight.setIcon(icon);
-        btnCharacterNine.setIcon(icon);
+        btnCharacterOne.setIcon(new ImageIcon(allImages.get(0)));
+        btnCharacterTwo.setIcon(new ImageIcon(allImages.get(1)));
+        btnCharacterThree.setIcon(new ImageIcon(allImages.get(2)));
+        btnCharacterFour.setIcon(new ImageIcon(allImages.get(3)));
+        btnCharacterFive.setIcon(new ImageIcon(allImages.get(4)));
+        btnCharacterSix.setIcon(new ImageIcon(allImages.get(5)));
+        btnCharacterSeven.setIcon(new ImageIcon(allImages.get(6)));
+        btnCharacterEight.setIcon(new ImageIcon(allImages.get(7)));
+        btnCharacterNine.setIcon(new ImageIcon(allImages.get(8)));
         btnCharacterTen.setIcon(icon);
         btnCharacterEleven.setIcon(icon);
         btnCharacterTwelve.setIcon(icon);
@@ -293,6 +354,26 @@ public class FrameCharacterSelection extends javax.swing.JFrame {
         btnCharacterSixteen.setIcon(icon);
         btnCharacterSeventeen.setIcon(icon);
         btnCharacterEighteen.setIcon(icon);
+        
+        setHoverEffect(btnCharacterOne);
+        setHoverEffect(btnCharacterTwo);
+        setHoverEffect(btnCharacterThree);
+        setHoverEffect(btnCharacterFour);
+        setHoverEffect(btnCharacterFive);
+        setHoverEffect(btnCharacterSix);
+        setHoverEffect(btnCharacterSeven);
+        setHoverEffect(btnCharacterEight);
+        setHoverEffect(btnCharacterNine);
+        setHoverEffect(btnCharacterTen);
+        setHoverEffect(btnCharacterEleven);
+        setHoverEffect(btnCharacterTwelve);
+        setHoverEffect(btnCharacterThirteen);
+        setHoverEffect(btnCharacterFourteen);
+        setHoverEffect(btnCharacterFifteen);
+        setHoverEffect(btnCharacterSixteen);
+        setHoverEffect(btnCharacterSeventeen);
+        setHoverEffect(btnCharacterEighteen);
+          
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

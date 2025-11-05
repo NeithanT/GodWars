@@ -150,6 +150,7 @@
       <SubComponents>
         <Component class="javax.swing.JButton" name="btnCharacterThree">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -160,6 +161,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterOne">
           <Properties>
+            <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
@@ -171,6 +173,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterTwo">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -184,6 +187,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterFour">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -194,6 +198,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterFive">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -204,6 +209,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterSeven">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -214,6 +220,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterSix">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -224,6 +231,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterEight">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -234,6 +242,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterNine">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -244,6 +253,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterTen">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -254,6 +264,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterEleven">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -264,6 +275,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterTwelve">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -274,6 +286,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterThirteen">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -284,6 +297,10 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterFourteen">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
+            <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+              <Color id="Default Cursor"/>
+            </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -294,6 +311,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterFifteen">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -304,6 +322,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterSixteen">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -314,6 +333,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterSeventeen">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
@@ -324,6 +344,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="btnCharacterEighteen">
           <Properties>
+            <Property name="contentAreaFilled" type="boolean" value="false"/>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
               <Dimension value="[260, 200]"/>
             </Property>
