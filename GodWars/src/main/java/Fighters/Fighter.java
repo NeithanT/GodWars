@@ -3,12 +3,11 @@ package Fighters;
 
 public abstract class Fighter {
     
-    FighterType type;
-    int strength;
-    int endurance;
-    int sanity;
-    
-    public abstract void normalAttack();
-    public abstract void specialAttack();
+    private AttackType type;
+    private Attack attack;
+    private String name;
+    private int strength;
+    private int endurance;
+    private int sanity;
     
 }

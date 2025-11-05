@@ -1,78 +1,83 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-/**
- *
- * @author diego
- */
 public class Server {
-    private final int PORT = 35500;
-    private final int maxConections = 4;
+    
+    public static final int PORT = 44444;
+    private final int MAX_CONNECTIONS = 4;
+    private ServerConnection[] players;
+    
+    
+    private int amtOfPlayers;
+    private int currentPlayer = 1;
+    
     private ServerSocket serverSocket;
-    private ArrayList<ThreadServidor> connectedClients; // arreglo de hilos por cada cliente conectado
-    //referencia a la pantalla
-    FrameServer refFrame;
-    private ThreadConnections connectionsThread;
-
-    public Server(FrameServer refFrame) {
-        connectedClients = new ArrayList<ThreadServidor>();
-        this.refFrame = refFrame;
-        this.init();
-        connectionsThread = new ThreadConnections(this);
-        connectionsThread.start();
+    private Socket temptSocket;
+    
+    public Server() {
+        System.out.println("Starting...");
+        players = new ServerConnection[4];
+        init();
     }
     
-    //método que inicializa el server
-    private void init(){
+    private void init() {
         try {
             serverSocket = new ServerSocket(PORT);
-            refFrame.writeMessage("Server running!!!");
+            waitConnection();
         } catch (IOException ex) {
-            refFrame.writeMessage("Error: " + ex.getMessage());
+            System.out.println("The port is not avalaible");
         }
     }
     
-    public void broadcast(String msg){
-        for (ThreadServidor client : connectedClients) {
-            try {
-                client.sender.writeUTF(msg);
-            } catch (IOException ex) {}
+    public void waitConnection() {
+    
+        try {
+            while (amtOfPlayers < MAX_CONNECTIONS) {
+                for (int i = 0; i < MAX_CONNECTIONS; i++) {
+                    if (players[i] == null) {
+                        System.out.println("Waiting for player "
+                            + (i + 1));
+                        break;
+                    }
+                }
                 
+                temptSocket = serverSocket.accept();
+                
+                for (int i = 0; i < MAX_CONNECTIONS; i++) {
+                    if (players[i] == null) {
+                        players[i] = new ServerConnection(temptSocket, i + 1, this);
+                        players[i].start();
+                        notifyOthers(i);
+                        break;
+                    }
+                }
+                temptSocket = null;
+            }
+        } catch (IOException ex) {
+            System.out.println("Error handling connections");
         }
-
     }
+    
 
-    public int getMaxConections() {
-        return maxConections;
+    public void notifyOthers(int index) {
+    
+        // TODO, in future, notify others of new players joined ..
     }
-
-    public ServerSocket getServerSocket() {
-        return serverSocket;
-    }
-
-    public ArrayList<ThreadServidor> getConnectedClients() {
-        return connectedClients;
-    }
-
-    public FrameServer getRefFrame() {
-        return refFrame;
+    
+    public void attackOthers(int dmg, ServerConnection sc) {
+        for (int i = 0; i < MAX_CONNECTIONS; i++) {
+            if (players[i] != null && !players[i].equals(sc)) {
+                players[i].receiveAttack(dmg);
+            }
+        }
     }
     
     
-    
-    
-    
-
-    
+    public static void main(String[] args) {
+        Server sev = new Server();
+    }
     
 }
