@@ -8,11 +8,12 @@ package Models;
  *
  * @author melissa
  */
-import Client.Console.FrameConsole;
+import Client.Console.FrameConsole; 
 import Server.Client;
 import Tiles.Board;
 
 public class CommandContext {
+    //referencias útiles para cualquier comando 
     private final FrameConsole console;
     private final Client clientUI;
     private final Board board;

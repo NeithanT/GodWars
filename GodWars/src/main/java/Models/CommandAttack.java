@@ -4,7 +4,9 @@
  */
 package Models;
 
+import Tiles.Board;
 import java.util.Random;
+
 
 /**
  *
@@ -13,8 +15,9 @@ import java.util.Random;
 
 
 public class CommandAttack extends Command {
-    private final Random random = new Random();
-
+ 
+    private final Random ramdom = new Random();
+    
     public CommandAttack() { }
 
     @Override public String name(){ return "ATTACK"; }
@@ -22,24 +25,41 @@ public class CommandAttack extends Command {
 
     @Override
     public CommandResult execute(CommandContext ctx, String[] args){
+            if (args.length < 2) {
+                return CommandResult.fail("Uso: attack <fila> <columna>");
+            }
+            int fila, col;
         try {
-            int dmg;
-            if (args.length > 0) {
-                try { dmg = Integer.parseInt(args[0]); }
-                catch(NumberFormatException ex) { dmg = 10 + random.nextInt(11); }
-            } else {
-                dmg = 10 + random.nextInt(11);
-            }
-
-            // envía por la conexión actual (no cambiamos protocolo)
-            if (ctx.client() != null && ctx.client().getConnection() != null) {
-                ctx.client().getConnection().attack(dmg);
-                return CommandResult.ok("Ataque enviado con daño " + dmg);
-            } else {
-                return CommandResult.fail("Conexión no disponible para enviar ataque.");
-            }
-        } catch (Exception ex) {
-            return CommandResult.fail("Error al ejecutar ATTACK: " + ex.getMessage());
+            fila = Integer.parseInt(args[0]);
+            col  = Integer.parseInt(args[1]);
+        } catch (NumberFormatException e) {
+            return CommandResult.fail("Fila y columna deben ser números enteros.");
         }
+
+        
+        
+        int dmg = 10 + ramdom.nextInt(11);
+        // convertir a 0 based
+        int r = fila - 1;
+        int c = col  - 1;
+
+        Board board = ctx.board();
+        if (!board.inBounds(r, c)) {
+            return CommandResult.fail("Fuera de rango. Fila: 1.." + board.rows() + ", Columna: 1.." + board.columns());
+        }
+
+        Board.HitResult res = board.attackAt(r, c);
+        switch (res) {
+            case HIT -> ctx.console().log("Impacto en (" + fila + "," + col + ").");
+            case DESTROYED -> ctx.console().log("Celda (" + fila + "," + col + ") destruida.");
+            case MISS -> ctx.console().log("Sin efecto en (" + fila + "," + col + ").");
+        }
+
+       
+        ctx.console().refreshBoard();
+
+        return CommandResult.ok(
+            "Ataque a (" + fila + "," + col + ") con " + dmg + " de daño. " + board.resumen()
+        );
     }
 }

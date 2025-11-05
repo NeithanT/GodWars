@@ -9,22 +9,33 @@ package Client.Console;
  * @author melissa
  */
 import Models.CommandInterpreter;
+import Tiles.Board;
 
 public class FrameConsole extends javax.swing.JFrame {
     private Client.Console.FrameConsole console;
     private CommandInterpreter interpreter;
+    private Board boardRef; 
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrameConsole.class.getName());
 
     /**
      * Creates new form FrameConsole
      */
+    
     public FrameConsole() {
         initComponents();
     
         btnSend.addActionListener(e -> ProcesarComando());
         txfCommand.addActionListener(e -> ProcesarComando());    
     
+    }
+    public void attachBoard(Board board) {
+    this.boardRef = board;
+    plnMatriz.repaint();       
+    }
+
+    public void refreshBoard() {
+        plnMatriz.repaint();
     }
     
     public void attachInterpreter(CommandInterpreter interpreter) {

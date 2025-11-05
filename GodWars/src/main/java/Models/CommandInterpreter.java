@@ -9,6 +9,7 @@ package Models;
  * @author melissa
  */
 public class CommandInterpreter {
+    //Interpreta el texto que el usuario escribió en la consola y llama al comando correcto.
     private final CommandRegistry registry;
     private final CommandContext ctx;
 

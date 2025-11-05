@@ -12,11 +12,9 @@ import java.util.Arrays;
  * @author melissa
  */
 public abstract class Command {
-    public abstract String name();
-    public abstract String help();
-    /**
-     * Ejecuta el comando en el contexto del cliente (UI + board).
-     * Devuelve un CommandResult con mensaje para la consola.
-     */
-    public abstract CommandResult execute(CommandContext ctx, String[] args);
+    public abstract String name(); //nombre del comando
+    public abstract String help(); // mensaje corto de ayuda
+    
+    public abstract CommandResult execute(CommandContext ctx, String[] args); //lógica del comanto 
+    //no es serializable, nada viaja por red aún, todo se ejecuta localmente 
 }

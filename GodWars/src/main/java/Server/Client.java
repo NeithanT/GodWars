@@ -6,6 +6,7 @@ import java.io.IOException;
 import static java.lang.Thread.sleep;
 import java.net.Socket;
 import java.util.Random;
+import Client.Console.FrameConsole;
 
 public class Client extends javax.swing.JFrame {
     
@@ -17,6 +18,11 @@ public class Client extends javax.swing.JFrame {
     private int[] hps = {100, 100, 100, 100};
     private Random rand;
     
+    private Tiles.Board board;
+    private FrameConsole console;
+    private Models.CommandRegistry registry;
+    private Models.CommandInterpreter interpreter;
+    
     /**
      * Creates new form Client
      */
@@ -24,6 +30,10 @@ public class Client extends javax.swing.JFrame {
         rand = new Random();
         initComponents();
         connectToServer();
+        
+        //esto es para activas la consola e interprete
+        setupConsoleAndInterpreter();
+        
         try {
             sleep(1000);
             currentPlayer = connection.getPlayer();
@@ -38,6 +48,8 @@ public class Client extends javax.swing.JFrame {
         connection = new ClientConnection(this);
         connection.start();
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -115,6 +127,9 @@ public class Client extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    
+    
     private void btnAttackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttackActionPerformed
         int dmg = rand.nextInt() % 20 + 10;
         connection.attack(dmg);
@@ -132,9 +147,37 @@ public class Client extends javax.swing.JFrame {
             prgBar1.setValue(prgBar1.getValue() - dmg);
         }
     }
+    
+    
     public ClientConnection getConnection() {
     return connection;
     }
+    
+    //Lógica del tablero
+    private void setupConsoleAndInterpreter() {
+    // 1) Tablero lógico
+    board = new Tiles.Board();
+
+    
+    console = new FrameConsole();
+    console.setVisible(true);
+    console.log("Consola iniciada. Escribe HELP.");
+
+    // 3) Registro de comandos
+    registry = new Models.CommandRegistry();
+    registry.register(new Models.CommandHelp(registry));
+    registry.register(new Models.CommandLog());
+    registry.register(new Models.StartCommand());
+    registry.register(new Models.CommandAttack());
+
+    // 4) Contexto e intérprete
+    Models.CommandContext ctx = new Models.CommandContext(console, this, board);
+    interpreter = new Models.CommandInterpreter(registry, ctx);
+
+    // 5) Inyectar intérprete en la consola
+    console.attachInterpreter(interpreter);
+}
+    
     /**
      * @param args the command line arguments
      */

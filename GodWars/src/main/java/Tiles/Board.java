@@ -25,9 +25,13 @@ public class Board {
         }
     }
     public Tile getTile(int row, int col) {
-        if (row < 0 || row >= ROWS || col < 0 || col >= COLUMNS) return null;
-        return tiles[row][col];
+    if (!inBounds(row, col)) return null;
+    return tiles[row][col];
     }
+    public boolean inBounds(int r, int c) { //para que no aaceda a una celda inexistente 
+    return r >= 0 && r < ROWS && c >= 0 && c < COLUMNS;
+    }
+    
 
     public void assignZone(FighterType fighter, int porcentaje) {
         // Asigna celdas proporcionalmente según el porcentaje del peleador
@@ -60,4 +64,34 @@ public class Board {
         }
         return String.format("Casillas ocupadas: %d | Dañadas: %d | Destruidas: %d", occupied, damaged, destroyed);
     }
+    
+    public enum HitResult { MISS, HIT, DESTROYED } 
+    public HitResult attackAt(int row, int col) {//Para poder realizar un daño a una cariila específica
+        if (!inBounds(row, col)) return HitResult.MISS;
+        Tile t = tiles[row][col];
+        switch (t.getState()) {
+            case EMPTY -> { // si estaba vacío, se va a marca como dañado
+                t.setState(TileState.DAMAGED);
+                return HitResult.HIT;
+            }
+            case OCCUPIED, DAMAGED -> {
+                t.setState(TileState.DESTROYED);
+                return HitResult.DESTROYED;
+            }
+            case DESTROYED -> {
+                return HitResult.MISS; // ya estaba destruida
+            }
+        }
+        return HitResult.MISS;
+    } 
+    public int rows() { 
+    return tiles.length; 
+    }
+
+    public int columns() { 
+        return tiles[0].length; 
+    }
+    
+    
+    
 }
